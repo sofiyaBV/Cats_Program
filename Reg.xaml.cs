@@ -19,9 +19,9 @@ namespace Cats_Program
     /// <summary>
     /// Логика взаимодействия для Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Reg : Window
     {
-        public Window1()
+        public Reg()
         {
             InitializeComponent();
         }

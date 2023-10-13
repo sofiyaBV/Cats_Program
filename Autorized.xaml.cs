@@ -24,10 +24,10 @@ namespace Cats_Program
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Autorized : Window
     {
         private SnackbarMessageQueue messageQueue = new SnackbarMessageQueue();
-        public MainWindow()
+        public Autorized()
         {
             InitializeComponent();
             Snackbar.MessageQueue = messageQueue;
@@ -65,7 +65,7 @@ namespace Cats_Program
         private void Reg_Click(object sender, RoutedEventArgs e)
         {
             // Создание и отображение окна регистрации
-            Window1 registrationWindow = new Window1();
+            Reg registrationWindow = new Reg();
             registrationWindow.ShowDialog();
         }
         private async Task<bool> Authenticate(string login, string password)
