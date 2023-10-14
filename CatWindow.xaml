@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cats_Program"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <ListView x:Name="LV" Grid.Row="1">
             <ListBox.ItemsPanel>
@@ -17,7 +17,7 @@
                 <DataTemplate x:Name="SingleLineDataTemplate">
                     <StackPanel  Orientation="Vertical" VerticalAlignment="Center">
                         <Image Source="{Binding photo.ImageURL}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150" ClipToBounds="True"/>
-                        <TextBlock Text="{Binding FactsCet}" TextTrimming="WordEllipsis" TextWrapping="Wrap" TextAlignment="Center" MaxWidth="150" />
+                        <TextBlock Text="{Binding factsCat}" TextTrimming="WordEllipsis" TextWrapping="Wrap" TextAlignment="Center" MaxWidth="150" />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
