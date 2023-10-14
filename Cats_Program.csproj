@@ -8,9 +8,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Images\catprints.png" />
+    <None Remove="Assets\Images\catprints3.png" />
+    <None Remove="Assets\Images\catShadow2_1.png" />
+    <None Remove="Assets\Images\catspaws1.jpg" />
+    <None Remove="Assets\Images\catstitle.png" />
+    <None Remove="Assets\Images\signuptitle.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Domain\" />
     <Folder Include="Presentation\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\catprints.png" />
+    <Resource Include="Assets\Images\catprints3.png" />
+    <Resource Include="Assets\Images\catShadow2_1.png" />
+    <Resource Include="Assets\Images\catspaws1.jpg" />
+    <Resource Include="Assets\Images\catstitle.png" />
+    <Resource Include="Assets\Images\signuptitle.png" />
   </ItemGroup>
 
 </Project>
