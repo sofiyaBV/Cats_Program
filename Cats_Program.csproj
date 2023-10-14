@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+
     <None Remove="Assets\Images\catprints.png" />
     <None Remove="Assets\Images\catprints3.png" />
     <None Remove="Assets\Images\catShadow2_1.png" />
@@ -20,6 +21,9 @@
     <Folder Include="Data\" />
     <Folder Include="Domain\" />
     <Folder Include="Presentation\" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.12" />
+
   </ItemGroup>
 
   <ItemGroup>
