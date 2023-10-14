@@ -1,11 +1,11 @@
-﻿using Cats_Program.API;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System;
 using System.Windows;
 using System.Windows.Media.Imaging;
-using Cats_Program.Models;
+using Cats_Program.Data.API;
+using Cats_Program.Domain.Models;
 
 namespace Cats_Program
 {

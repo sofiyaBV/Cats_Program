@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Presentation\**" />
+    <EmbeddedResource Remove="Presentation\**" />
+    <None Remove="Presentation\**" />
+    <Page Remove="Presentation\**" />
+  </ItemGroup>
+
+  <ItemGroup>
 
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <None Remove="Assets\Images\catprints.png" />
@@ -19,9 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Domain\" />
-    <Folder Include="Presentation\" />
     <PackageReference Include="MaterialDesignColors" Version="2.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.12" />

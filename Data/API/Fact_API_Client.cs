@@ -1,4 +1,4 @@
-﻿using Cats_Program.ProviderJson;
+﻿using Cats_Program.Domain.ProviderJson;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cats_Program.API
+namespace Cats_Program.Data.API
 {
     public class Fact_API_Client
     {

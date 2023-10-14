@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cats_Program.API
+namespace Cats_Program.Data.API
 {
     public class Cat_API_Client
     {

@@ -36,8 +36,11 @@ namespace Cats_Program
 
                 if (isUserAuthenticated)
                 {
+                    CatWindow catWindow = new CatWindow();
+
                     // Успешная аутентификация, выполните действия, которые вам необходимы
                     ShowSnackbar("Успешный вход!");
+                    catWindow.Show();
                 }
                 else
                 {

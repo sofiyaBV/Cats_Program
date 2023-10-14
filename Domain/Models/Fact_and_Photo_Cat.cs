@@ -1,11 +1,11 @@
-﻿using Cats_Program.API;
+﻿using Cats_Program.Data.API;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cats_Program.Models
+namespace Cats_Program.Domain.Models
 {
     public class Fact_and_Photo_Cat
     {
