@@ -9,6 +9,7 @@
 
   <ItemGroup>
 
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <None Remove="Assets\Images\catprints.png" />
     <None Remove="Assets\Images\catprints3.png" />
     <None Remove="Assets\Images\catShadow2_1.png" />
