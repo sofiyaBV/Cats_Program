@@ -10,9 +10,9 @@ namespace Cats_Program.Models
     public class Fact_and_Photo_Cat
     {
         public Cat_Photo photo { get; set; }
-        public string factsCat { get; set; }
+        public Cat_Fact factsCat { get; set; }
 
-        public Fact_and_Photo_Cat(Cat_Photo photo, string factsCat)
+        public Fact_and_Photo_Cat(Cat_Photo photo, Cat_Fact factsCat)
         {
             this.photo = photo;
             this.factsCat = factsCat;

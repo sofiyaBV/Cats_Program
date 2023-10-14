@@ -88,7 +88,7 @@ namespace Cats_Program
             int maxCount = Math.Min(catPhotos.Count, factsCets.Count);
             for (int i = 0; i < maxCount; i++)
             {
-                products.Add(new Fact_and_Photo_Cat(catPhotos[i], factsCets[i].Data));
+                products.Add(new Fact_and_Photo_Cat(catPhotos[i], factsCets[i]));
             }
            
             LV.ItemsSource = products;
