@@ -33,7 +33,7 @@
             <Image Source="./Assets/Images/catShadow2_1.png" Height="80" Margin="270 0 760 350" />
         </Viewbox>
         <Line Grid.Column="1" X1="20" Y1="50" X2="230" Y2="50" Stroke="Black" StrokeThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 130"/>
-        <Button Grid.Column="1" Content="Login" Width="Auto" Height="Auto" FontSize="17" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 30"/>
+        <Button Grid.Column="1" Content="Login" Width="Auto" Height="Auto" FontSize="17" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 30" Click="btLogin_Click"/>
         <Viewbox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
             <Image Source="./Assets/Images/catspaws1.jpg" Width="Auto" Height="Auto" Margin="0 0 0 0"/>
         </Viewbox>

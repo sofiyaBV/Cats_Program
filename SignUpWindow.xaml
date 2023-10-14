@@ -21,11 +21,14 @@
         </Viewbox>
         <Line Grid.Column="1" X1="-10" Y1="50" X2="530" Y2="50" Stroke="#07575B " StrokeThickness="1" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 50 0 0"/>
         <TextBlock Grid.Column="1" Text="Create a Cats Program account" Height="Auto" Width="Auto" FontSize="10" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 105 0 0"/>
-        <TextBox Grid.Column="1" VerticalAlignment="Center" Margin="0 0 35 70"
+        <TextBox x:Name="Login" Grid.Column="1" VerticalAlignment="Center" Margin="0 0 35 70"
          materialDesign:HintAssist.HelperText="Helper text longer than error"
          materialDesign:HintAssist.Hint="Name" />
-        <PasswordBox Grid.Column="1" VerticalAlignment="Center" Margin="0 0 35 -30" materialDesign:HintAssist.HelperText="At least 8 characters" materialDesign:HintAssist.Hint="Password" materialDesign:TextFieldAssist.HasClearButton="True" />
-        <Button Grid.Column="1" Content="Create Account" Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="#07575B" Foreground="White" Margin="0 0 0 50"/>
-        <Button Grid.Column="1" Content="Already have an account?" Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 20"/>
+        <PasswordBox x:Name="Password" Grid.Column="1" VerticalAlignment="Center" Margin="0 0 35 -30" materialDesign:HintAssist.HelperText="At least 8 characters" materialDesign:HintAssist.Hint="Password" materialDesign:TextFieldAssist.HasClearButton="True" />
+        <Button Grid.Column="1" Content="Create Account" Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="#07575B" Foreground="White" Margin="0 0 0 50" Click="Enter_Click"/>
+        <Button Grid.Column="1" Content="Already have an account?" Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 20" Click="CreateAccount_Click"/>
+        <materialDesign:Snackbar x:Name="Snackbar" Canvas.Left="241" Canvas.Top="22">
+            <materialDesign:SnackbarMessage Content="Успешный вход!" Foreground="White"/>
+        </materialDesign:Snackbar>
     </Grid>
 </Window>
