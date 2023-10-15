@@ -14,6 +14,14 @@ namespace Cats_Program
     /// </summary>
     public partial class CatWindow : Window
     {
+        public CatWindow()
+        {
+            InitializeComponent();
+        }
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            await ShowAsync();
+        }
         List<Cat_Fact> factsCets = new List<Cat_Fact>();
         List<Cat_Photo> catPhotos = new List<Cat_Photo>();
         List<Fact_and_Photo_Cat> products = new List<Fact_and_Photo_Cat>();
@@ -94,10 +102,6 @@ namespace Cats_Program
             LV.ItemsSource = products;
         }
 
-        private async void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            await ShowAsync();
-
-        }
+       
     }
 }
