@@ -13,6 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MaterialDesignThemes.Wpf;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cats_Program
 {
@@ -21,46 +23,64 @@ namespace Cats_Program
     /// </summary>
     public partial class Reg : Window
     {
+        private SnackbarMessageQueue messageQueue = new SnackbarMessageQueue();
         public Reg()
         {
             InitializeComponent();
+            Snackbar.MessageQueue = messageQueue;
+        }
+
+
+        private async void Enter_Click(object sender, RoutedEventArgs e)
+        {
+            string login = Login.Text;
+            string password = Pass.Password;
+
+            try
+            {
+                bool isUserAuthenticated = await Authenticate(login, password);
+
+                if (isUserAuthenticated)
+                {
+                    // Успешная аутентификация, выполните действия, которые вам необходимы
+                    ShowSnackbar("Успешный вход!");
+                    CatWindow catWindow = new CatWindow();
+                    catWindow.Show();
+                }
+                else
+                {
+                    // Пользователь не найден, выполните действия по обработке ошибки
+                    ShowSnackbar("Ошибка аутентификации");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Обработка ошибок базы данных
+                ShowSnackbar("Произошла ошибка: " + ex.Message);
+            }
+
         }
 
         private void Reg_Click(object sender, RoutedEventArgs e)
         {
-            string login = Login.Text;
-            string password = Password.Password;
-
-            if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(password))
-            {
-                using (var context = new CatsDBContext())
-                {
-                    // Проверка уникальности логина
-                    var existingUser = context.User.FirstOrDefault(u => u.Login == login);
-                    if (existingUser != null)
-                    {
-                        MessageBox.Show("Пользователь с таким логином уже существует.");
-                    }
-                    else
-                    {
-                        // Добавление нового пользователя в базу данных
-                        context.User.Add(new User { Login = login, Password = password });
-                        context.SaveChanges();
-                        MessageBox.Show("Регистрация завершена. Теперь вы можете войти.");
-                        Close(); // Закрыть окно регистрации
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Заполните все поля.");
-            }
+            // Создание и отображение окна регистрации
+            Reg registrationWindow = new Reg();
+            registrationWindow.ShowDialog();
         }
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        private async Task<bool> Authenticate(string login, string password)
         {
-            Close(); // Закрыть окно регистрации
+            using (var context = new CatsDBContext())
+            {
+                // Проверяем, существует ли пользователь с указанным логином и паролем
+                var user = await context.User.SingleOrDefaultAsync(u => u.Login == login && u.Password == password);
+
+                return user != null;
+            }
         }
 
-
+        private void ShowSnackbar(string message)
+        {
+            messageQueue.Enqueue(message);
+        }
     }
 }

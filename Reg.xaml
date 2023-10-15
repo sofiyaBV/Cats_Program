@@ -5,14 +5,72 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Cats_Program"
-        mc:Ignorable="d"
-        Title="Window1" Height="250" Width="400">
+               mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        MinWidth="400" MinHeight="450"
+        MaxWidth="900" MaxHeight="500">
+
     <Grid>
-        <StackPanel>
-            <TextBox x:Name="Login" Margin="10" BorderBrush="White"  materialDesign:HintAssist.Hint="Login"/>
-            <PasswordBox x:Name="Password" Margin="10" BorderBrush="White"  materialDesign:HintAssist.Hint="Password"/>
-            <Button Content="Завершить регистрацию" Click="Reg_Click" Margin="10"/>
-            <Button Content="Выйти" Click="Exit_Click" Margin="10"/>
-        </StackPanel>
+        <!--<Image Source="C:\Users\Denis\source\repos\WpfAppCats\Image\Log In.png" Margin="-10,-10,0,0" Stretch="Fill"/>-->
+        <Canvas Cursor="" >
+
+            <StackPanel Canvas.Bottom="100" Canvas.Left="285" HorizontalAlignment="Left" Canvas.Top="120" VerticalAlignment="Center" Width="200" >
+                <materialDesign:PackIcon Background="White" Foreground="{Binding ElementName=NameTextBox, Path=BorderBrush}" Kind="Account" />
+                <TextBox x:Name="Login" BorderBrush="White" Canvas.Bottom="100" Canvas.Left="285"  Style="{StaticResource MaterialDesignFilledTextBox}">
+
+                    <materialDesign:HintAssist.Hint>
+
+                        <TextBlock Text="Login" />
+                    </materialDesign:HintAssist.Hint>
+
+                </TextBox>
+
+            </StackPanel>
+
+            <StackPanel Canvas.Bottom="200" Canvas.Left="285"  Canvas.Top="189" Width="200" >
+                <materialDesign:PackIcon  Background="White"  Foreground="{Binding ElementName=NameTextBox, Path=BorderBrush}" Kind="LockOutline" />
+                <PasswordBox x:Name="Pass" BorderBrush="White" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFilledPasswordBox}" />
+            </StackPanel>
+
+            <Button x:Name="Enter" Content="Вход" Canvas.Bottom="100" Canvas.Left="396" Width="200" Height="40" materialDesign:ShadowAssist.ShadowAnimationDuration="0:0:0.5" 
+                  Style="{StaticResource MaterialDesignRaisedDarkButton}" Cursor="Hand" HorizontalAlignment="Left" Canvas.Top="270" VerticalAlignment="Center" Click="Enter_Click"/>
+            <Button x:Name="Registration" Content="Registration" Canvas.Bottom="100" Canvas.Left="175" Width="200" Height="40" materialDesign:ShadowAssist.ShadowAnimationDuration="0:0:0.5" 
+      Style="{StaticResource MaterialDesignRaisedDarkButton}" Cursor="Hand" HorizontalAlignment="Center" Canvas.Top="270" VerticalAlignment="Top" Click="Reg_Click"/>
+            <TextBlock  FontStyle="Italic"  Canvas.Left="285" Canvas.Top="318" HorizontalAlignment="Left" VerticalAlignment="Top">
+          <Line X1="0"  X2="87"  Stroke="White" />
+              <Run FontSize="16" Foreground="White">Or</Run>
+          <Line X1="0"  X2="85"  Stroke="White" />
+            </TextBlock>
+
+            <Button x:Name="Google" Canvas.Bottom="20" Canvas.Left="295" Background="Gray" 
+IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+ToolTip="MaterialDesignFloatingActionMiniDarkButton" Cursor="Hand">
+                <materialDesign:PackIcon
+  Kind="Google    " HorizontalAlignment="Center" />
+            </Button>
+
+            <Button x:Name="FaceBook" Canvas.Bottom="20" Canvas.Left="365" Background="Gray" 
+IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+ToolTip="MaterialDesignFloatingActionMiniDarkButton" Cursor="Hand">
+                <materialDesign:PackIcon
+  Kind="Facebook" HorizontalAlignment="Center" />
+            </Button>
+
+            <Button x:Name="Apple" Canvas.Bottom="20" Canvas.Left="435" Background="Gray" 
+IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+ToolTip="MaterialDesignFloatingActionMiniDarkButton" Cursor="Hand">
+                <materialDesign:PackIcon
+  Kind="Apple" HorizontalAlignment="Center" />
+            </Button>
+
+            <materialDesign:Snackbar x:Name="Snackbar" Canvas.Left="241" Canvas.Top="22">
+                <materialDesign:SnackbarMessage Content="Успешный вход!" Foreground="White"/>
+            </materialDesign:Snackbar>
+
+        </Canvas>
     </Grid>
 </Window>
+
