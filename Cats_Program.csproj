@@ -8,13 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Presentation\**" />
-    <EmbeddedResource Remove="Presentation\**" />
-    <None Remove="Presentation\**" />
-    <Page Remove="Presentation\**" />
-  </ItemGroup>
-
-  <ItemGroup>
 
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <None Remove="Assets\Images\catprints.png" />
@@ -23,6 +16,10 @@
     <None Remove="Assets\Images\catspaws1.jpg" />
     <None Remove="Assets\Images\catstitle.png" />
     <None Remove="Assets\Images\signuptitle.png" />
+    <None Remove="Presentation\Pages\MainPage\Assets\logout.png" />
+    <None Remove="Presentation\Pages\MainPage\Assets\main.png" />
+    <None Remove="Presentation\Pages\MainPage\Assets\star.png" />
+    <None Remove="Presentation\Pages\MainPage\Assets\testimage.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,6 +40,10 @@
     <Resource Include="Assets\Images\catspaws1.jpg" />
     <Resource Include="Assets\Images\catstitle.png" />
     <Resource Include="Assets\Images\signuptitle.png" />
+    <Resource Include="Presentation\Pages\MainPage\Assets\logout.png" />
+    <Resource Include="Presentation\Pages\MainPage\Assets\main.png" />
+    <Resource Include="Presentation\Pages\MainPage\Assets\star.png" />
+    <Resource Include="Presentation\Pages\MainPage\Assets\testimage.jpg" />
   </ItemGroup>
 
 </Project>
