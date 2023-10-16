@@ -46,6 +46,8 @@ namespace Cats_Program
                     ShowSnackbar("Успешный вход!");
                     CatWindow catWindow = new CatWindow();
                     catWindow.Show();
+                    Close();
+
                 }
                 else
                 {
@@ -66,6 +68,8 @@ namespace Cats_Program
             // Создание и отображение окна регистрации
             Reg registrationWindow = new Reg();
             registrationWindow.ShowDialog();
+            Close();
+
         }
         private async Task<bool> Authenticate(string login, string password)
         {

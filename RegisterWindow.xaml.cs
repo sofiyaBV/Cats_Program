@@ -28,12 +28,16 @@ namespace Cats_Program
         {
             SignUpWindow signUpWindow = new SignUpWindow();
             signUpWindow.Show();
+            Close();
+
         }
 
         private void btLogin_Click(object sender, RoutedEventArgs e)
         {
             Reg reg = new Reg();
             reg.Show();
+            Close();
+
         }
     }
 }
