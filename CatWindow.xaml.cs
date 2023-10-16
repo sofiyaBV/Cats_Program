@@ -14,66 +14,58 @@ namespace Cats_Program
     /// </summary>
     public partial class CatWindow : Window
     {
-        List<Cat_Fact> factsCets = new List<Cat_Fact>();
-        List<Cat_Photo> catPhotos = new List<Cat_Photo>();
-        List<Fact_and_Photo_Cat> products = new List<Fact_and_Photo_Cat>();
-        private async Task GetRandomCat(int count)
+        public CatWindow()
+        {
+            InitializeComponent();
+        }
+        private int page = 1;
+        private Cat_Photo? catPhoto;
+        private Cat_Fact? catFact;
+        private async Task GetRandomCat()
         {
             Cat_API_Client catApiClient = new Cat_API_Client();
             try
             {
-                for (int i = 0; i < count; i++)
-                {
-                    byte[] catImageData = await catApiClient.GetRandomCatImageAsync();
-                    if (catImageData != null)
-                    {
-                        using (MemoryStream memoryStream = new MemoryStream(catImageData))
-                        {
-                            BitmapImage catImage = new BitmapImage();
-                            catImage.BeginInit();
-                            catImage.CacheOption = BitmapCacheOption.OnLoad;
-                            catImage.StreamSource = memoryStream;
-                            catImage.EndInit();
-
-                            // Создание экземпляра CatPhoto с изображением
-                            Cat_Photo catPhoto = new Cat_Photo(catImage);
-                            //MessageBox.Show(catPhoto.ImageURL.Format.ToString());
-                            // Добавление catPhoto в список ListView
-                            //LV.Items.Add(catPhoto);
-                            catPhotos.Add(catPhoto);
-
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Не удалось получить изображение кота.");
-                    }
-                }
+           
+               byte[] catImageData = await catApiClient.GetRandomCatImageAsync();
+               if (catImageData != null)
+               {
+                   using (MemoryStream memoryStream = new MemoryStream(catImageData))
+                   {
+                       BitmapImage catImage = new BitmapImage();
+                       catImage.BeginInit();
+                       catImage.CacheOption = BitmapCacheOption.OnLoad;
+                       catImage.StreamSource = memoryStream;
+                       catImage.EndInit();
+                       catPhoto = new Cat_Photo(catImage);
+                   }
+               }
+               else
+               {
+                   MessageBox.Show("Не удалось получить изображение кота.");
+               }
+           
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Произошла ошибка: " + ex.Message);
             }
         }
-        private async Task GetRandomFact(int count)
+        private async Task GetRandomFact()
         {
             Fact_API_Client factsApiClient = new Fact_API_Client();
             try
             {
-                for (int i = 0; i < count; i++)
-                {
-                    string cat = await factsApiClient.GetFact();
-                    if (cat != null)
-                    {
-                        Cat_Fact fact = new Cat_Fact(cat);
-                        //MessageBox.Show(fact.ToString());
-                        factsCets.Add(fact);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Не удалось получить изображение кота.");
-                    }
-                }
+               string cat = await factsApiClient.GetFact();
+               if (cat != null)
+               {
+                    catFact = new Cat_Fact(cat);
+               }
+               else
+               {
+                   MessageBox.Show("Не удалось получить изображение кота.");
+               }
+                
             }
             catch (Exception ex)
             {
@@ -82,22 +74,24 @@ namespace Cats_Program
         }
         private async Task ShowAsync()
         {
-            await GetRandomCat(10);
-            await GetRandomFact(10);
-
-            int maxCount = Math.Min(catPhotos.Count, factsCets.Count);
-            for (int i = 0; i < maxCount; i++)
-            {
-                products.Add(new Fact_and_Photo_Cat(catPhotos[i], factsCets[i]));
-            }
-           
-            LV.ItemsSource = products;
+            await GetRandomCat();
+            await GetRandomFact();
+            Fact_and_Photo_Cat fact_and_photo = new Fact_and_Photo_Cat(catPhoto, catFact);
+            photo.Source = null;
+            fact.Text = null;
+            photo.Source = fact_and_photo.photo.GetPhoto();
+            fact.Text = fact_and_photo.factsCat.ToString();
         }
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             await ShowAsync();
+        }
 
+        private async void tb_next_click(object sender, RoutedEventArgs e)
+        {
+            page++;
+            await ShowAsync();
         }
     }
 }

@@ -15,5 +15,9 @@ namespace Cats_Program.API
         {
             ImageURL = imageURL;
         }
+        public BitmapImage GetPhoto()
+        {
+            return ImageURL;
+        }
     }
 }

@@ -7,20 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <ListView x:Name="LV" Grid.Row="1">
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <UniformGrid Columns="5"/>
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-            <ListView.ItemTemplate>
-                <DataTemplate x:Name="SingleLineDataTemplate">
-                    <StackPanel  Orientation="Vertical" VerticalAlignment="Center">
-                        <Image Source="{Binding photo.ImageURL}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150" ClipToBounds="True"/>
-                        <TextBlock Text="{Binding factsCat}" TextTrimming="WordEllipsis" TextWrapping="Wrap" TextAlignment="Center" MaxWidth="150" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0.3*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" x:Name="LV" Orientation="Vertical" VerticalAlignment="Center">
+            <Image x:Name="photo" Source="{Binding bitmapImage}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150" ClipToBounds="True"/>
+            <TextBlock x:Name="fact" Text="{Binding factsCat}" TextTrimming="WordEllipsis" TextWrapping="Wrap" TextAlignment="Center" MaxWidth="150" />
+        </StackPanel>
+        <Button Grid.Row="1" x:Name="bt_next" Content="Next" Click="tb_next_click"/>
     </Grid>
 </Window>
