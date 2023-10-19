@@ -12,7 +12,7 @@
             <RowDefinition Height="0.3*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" x:Name="LV" Orientation="Vertical" VerticalAlignment="Center">
-            <Image x:Name="photo" Source="{Binding bitmapImage}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150" ClipToBounds="True"/>
+            <Image x:Name="photo" Source="{Binding bitmapImage}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150" ClipToBounds="True" MouseDown="Image_MouseDown"/>
             <TextBlock x:Name="fact" Text="{Binding factsCat}" TextTrimming="WordEllipsis" TextWrapping="Wrap" TextAlignment="Center" MaxWidth="150" />
         </StackPanel>
         <Button Grid.Row="1" x:Name="bt_next" Content="Next" Click="tb_next_click"/>

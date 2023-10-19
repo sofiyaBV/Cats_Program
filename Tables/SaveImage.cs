@@ -10,22 +10,22 @@ namespace DBCats.Tables
     {
         public int Id { get; set; }
         public string Facts { get; set; }
-        public byte[] ImageData { get; set; }
+        public byte[] Image { get; set; }
 
         public SaveImage()
         {
         }
 
-        public SaveImage(int id, string facts, byte[] imageData)
+        public SaveImage(int id, string facts, byte[] image)
         {
             Id = id;
             Facts = facts;
-            ImageData = imageData;
+            Image = image;
         }
 
         public override string ToString()
         {
-            return $"Id:{Id} | Facts:{Facts} | ImageData: {ImageData.Length} bytes";
+            return $"Id:{Id} | Facts:{Facts} | ImageData: {Image.Length} bytes";
         }
     }
 }

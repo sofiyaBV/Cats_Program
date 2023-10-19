@@ -16,7 +16,7 @@ namespace DBCats
         public DbSet<SaveImage> SaveImage { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=MIPC\\SQLEXPRESS01;Initial Catalog=Cats;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-N5K3CGS\\SQLEXPRESS01;Initial Catalog=Cats;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
         }
 
     }
