@@ -16,6 +16,10 @@
     <None Remove="Assets\Images\catspaws1.jpg" />
     <None Remove="Assets\Images\catstitle.png" />
     <None Remove="Assets\Images\signuptitle.png" />
+    <None Remove="Assets\Pages\logout.png" />
+    <None Remove="Assets\Pages\main.png" />
+    <None Remove="Assets\Pages\star.png" />
+    <None Remove="Assets\Pages\testimage.jpg" />
     <None Remove="Presentation\Pages\MainPage\Assets\logout.png" />
     <None Remove="Presentation\Pages\MainPage\Assets\main.png" />
     <None Remove="Presentation\Pages\MainPage\Assets\star.png" />
@@ -40,6 +44,10 @@
     <Resource Include="Assets\Images\catspaws1.jpg" />
     <Resource Include="Assets\Images\catstitle.png" />
     <Resource Include="Assets\Images\signuptitle.png" />
+    <Resource Include="Assets\Pages\logout.png" />
+    <Resource Include="Assets\Pages\main.png" />
+    <Resource Include="Assets\Pages\star.png" />
+    <Resource Include="Assets\Pages\testimage.jpg" />
     <Resource Include="Presentation\Pages\MainPage\Assets\logout.png" />
     <Resource Include="Presentation\Pages\MainPage\Assets\main.png" />
     <Resource Include="Presentation\Pages\MainPage\Assets\star.png" />
