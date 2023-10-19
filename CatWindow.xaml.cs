@@ -95,8 +95,8 @@ namespace Cats_Program
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (sender is Image clickedImage)
-            {
+            //if (sender is Image clickedImage)
+            //{
                 // Получите байты изображения, которое было нажато
                 //byte[] image = GetImage(clickedImage);
 
@@ -120,7 +120,7 @@ namespace Cats_Program
                 //dbContext.SaveChanges();
                 //}
                 //}
-            }
+            //}
         }
 
         private byte[] GetImage(Image image)
