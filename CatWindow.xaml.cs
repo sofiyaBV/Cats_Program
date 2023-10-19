@@ -31,7 +31,6 @@ namespace Cats_Program
             Cat_API_Client catApiClient = new Cat_API_Client();
             try
             {
-
                 byte[] catImageData = await catApiClient.GetRandomCatImageAsync();
                 if (catImageData != null)
                 {
@@ -99,27 +98,28 @@ namespace Cats_Program
             if (sender is Image clickedImage)
             {
                 // Получите байты изображения, которое было нажато
-                byte[] image = GetImage(clickedImage);
+                //byte[] image = GetImage(clickedImage);
 
                 // Получите соответствующий факт из списка factsCets
-                int clickedImageIndex = LV.Items.IndexOf(clickedImage.DataContext); // Предполагается, что DataContext хранит информацию о факте
-                if (clickedImageIndex >= 0 && clickedImageIndex < factsCets.Count)
-                {
-                    string fact = factsCets[clickedImageIndex].ToString();
+                //int clickedImageIndex = LV.Items.IndexOf(clickedImage.DataContext); // Предполагается, что DataContext хранит информацию о факте
 
-                    // Создайте экземпляр CatsDBContext
-                    using (var dbContext = new CatsDBContext())
-                    {
-                        // Создайте новую запись SaveImage и сохраните ее в базе данных
-                        SaveImage saveImage = new SaveImage
-                        {
-                            Facts = fact, 
-                            Image = image
-                        };
-                        dbContext.SaveImage.Add(saveImage);
-                        dbContext.SaveChanges();
-                    }
-                }
+                //if (clickedImageIndex >= 0 && clickedImageIndex < factsCets.Count)
+                //{
+                //string fact = factsCets[clickedImageIndex].ToString();
+
+                // Создайте экземпляр CatsDBContext
+                //using (var dbContext = new CatsDBContext())
+                //{
+                // Создайте новую запись SaveImage и сохраните ее в базе данных
+                //SaveImage saveImage = new SaveImage
+                //{
+                //    Facts = fact,
+                //    Image = catPhoto
+                //};
+                //dbContext.SaveImage.Add(saveImage);
+                //dbContext.SaveChanges();
+                //}
+                //}
             }
         }
 
