@@ -16,7 +16,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:Name="SingleLineDataTemplate">
                     <StackPanel  Orientation="Vertical" VerticalAlignment="Center">
-                        <Image Source="{Binding photo.ImageURL}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150" ClipToBounds="True"/>
+                        <Image Source="{Binding photo.ImageURL}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150" ClipToBounds="True" MouseDown="Image_MouseDown"/>
                         <TextBlock Text="{Binding factsCat}" TextTrimming="WordEllipsis" TextWrapping="Wrap" TextAlignment="Center" MaxWidth="150" />
                     </StackPanel>
                 </DataTemplate>

@@ -6,6 +6,11 @@ using System.Windows;
 using System.Windows.Media.Imaging;
 using Cats_Program.Data.API;
 using Cats_Program.Domain.Models;
+using DBCats.Tables;
+using DBCats;
+using System.Windows.Input;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Cats_Program
 {
@@ -102,6 +107,52 @@ namespace Cats_Program
             LV.ItemsSource = products;
         }
 
-       
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is Image clickedImage)
+            {
+                // Получите байты изображения, которое было нажато
+                byte[] image = GetImage(clickedImage);
+
+                // Получите соответствующий факт из списка factsCets
+                int clickedImageIndex = LV.Items.IndexOf(clickedImage.DataContext); // Предполагается, что DataContext хранит информацию о факте
+                if (clickedImageIndex >= 0 && clickedImageIndex < factsCets.Count)
+                {
+                    string fact = factsCets[clickedImageIndex].ToString();
+
+                    // Создайте экземпляр CatsDBContext
+                    using (var dbContext = new CatsDBContext())
+                    {
+                        // Создайте новую запись SaveImage и сохраните ее в базе данных
+                        SaveImage saveImage = new SaveImage
+                        {
+                            Facts = fact, 
+                            Image = image
+                        };
+                        dbContext.SaveImage.Add(saveImage);
+                        dbContext.SaveChanges();
+                    }
+                }
+            }
+        }
+
+        private byte[] GetImage(Image image)
+        {
+            byte[] imageData = null;
+
+            if (image.Source is BitmapImage bitmapImage)
+            {
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                    encoder.Frames.Add(BitmapFrame.Create(bitmapImage));
+                    encoder.Save(memoryStream);
+                    imageData = memoryStream.ToArray();
+                }
+            }
+
+            return imageData;
+        }
+
     }
 }
