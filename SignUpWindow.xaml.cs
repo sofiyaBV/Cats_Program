@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Windows;
 using System;
+using DBCats.Tables;
+using System.Linq;
 
 namespace Cats_Program
 {
@@ -17,66 +19,51 @@ namespace Cats_Program
     /// </summary>
     public partial class SignUpWindow : Window
     {
-        private SnackbarMessageQueue messageQueue = new SnackbarMessageQueue();
         public SignUpWindow()
         {
             InitializeComponent();
-            Snackbar.MessageQueue = messageQueue;
-        }
-
-
-        private async void Enter_Click(object sender, RoutedEventArgs e)
-        {
-            string login = Login.Text;
-            string password = Password.Password;
-
-            try
-            {
-                bool isUserAuthenticated = await Authenticate(login, password);
-
-                if (isUserAuthenticated)
-                {
-                    CatWindow catWindow = new CatWindow();
-
-                    // Успешная аутентификация, выполните действия, которые вам необходимы
-                    ShowSnackbar("Успешный вход!");
-                    catWindow.Show();
-                }
-                else
-                {
-                    // Пользователь не найден, выполните действия по обработке ошибки
-                    ShowSnackbar("Ошибка аутентификации");
-                }
-            }
-            catch (Exception ex)
-            {
-                // Обработка ошибок базы данных
-                ShowSnackbar("Произошла ошибка: " + ex.Message);
-            }
-
         }
 
         private void CreateAccount_Click(object sender, RoutedEventArgs e)
         {
-            // Создание и отображение окна регистрации
-            Reg registrationWindow = new Reg();
-            registrationWindow.ShowDialog();
-        }
-        private async Task<bool> Authenticate(string login, string password)
-        {
-            using (var context = new CatsDBContext())
-            {
-                // Проверяем, существует ли пользователь с указанным логином и паролем
-                var user = await context.User.SingleOrDefaultAsync(u => u.Login == login && u.Password == password);
+            string login = Login.Text;
+            string password = Password.Password;
 
-                return user != null;
+            if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(password))
+            {
+                using (var context = new CatsDBContext())
+                {
+                    // Проверка уникальности логина
+                    var existingUser = context.User.FirstOrDefault(u => u.Login == login);
+                    if (existingUser != null)
+                    {
+                        MessageBox.Show("Пользователь с таким логином уже существует.");
+                    }
+                    else
+                    {
+                        // Добавление нового пользователя в базу данных
+                        context.User.Add(new User { Login = login, Password = password });
+                        context.SaveChanges();
+                        MessageBox.Show("Регистрация завершена. Теперь вы можете войти.");
+                        Close(); // Закрыть окно регистрации
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Заполните все поля.");
             }
         }
-
-        private void ShowSnackbar(string message)
+        private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            messageQueue.Enqueue(message);
+            Close(); // Закрыть окно регистрации
         }
 
+        private void Enter_Click(object sender, RoutedEventArgs e)
+        {
+            Reg reg = new Reg();
+            reg.Show();
+            Close();
+        }
     }
 }
