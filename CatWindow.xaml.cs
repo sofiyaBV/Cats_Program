@@ -92,7 +92,6 @@ namespace Cats_Program
             await ShowAsync();
         }
 
-
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             //if (sender is Image clickedImage)

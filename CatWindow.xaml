@@ -5,17 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cats_Program"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        x:Name="window" Title="MainWindow" MinHeight="450" MinWidth="800" Loaded="Window_Loaded" SizeChanged="window_SizeChanged">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="0.3*"/>
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" x:Name="LV" Orientation="Vertical" VerticalAlignment="Center">
-            <Image x:Name="photo" Source="{Binding bitmapImage}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150" ClipToBounds="True" MouseDown="Image_MouseDown"/>
-            <TextBlock x:Name="fact" Text="{Binding factsCat}" TextTrimming="WordEllipsis" TextWrapping="Wrap" TextAlignment="Center" MaxWidth="150" />
-        </StackPanel>
-        <Button Grid.Row="1" x:Name="bt_next" Content="Next" Click="tb_next_click"/>
-    </Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
+        <Grid Grid.Column="0" Background="#66A5AD">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" x:Name="btnLike">
+                    <Image Source=".\Assets\Pages\star.png"></Image>
+                </Button>
+                <Button Grid.Row="1" x:Name="btnMain">
+                    <Image Source=".\Assets\Pages\main.png"></Image>
+                </Button>
+                <Button Grid.Row="2" x:Name="btnLogout">
+                    <Image Source=".\Assets\Pages\logout.png"></Image>
+                </Button>
+        </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                </Grid.RowDefinitions>
+
+                <Image Grid.Row="0" x:Name="photo" Source="{Binding bitmapImage}" HorizontalAlignment="Center" VerticalAlignment="Center" ClipToBounds="True"/>
+                <TextBlock Grid.Row="1" x:Name="fact" Text="{Binding factsCat}" TextTrimming="WordEllipsis" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center">Content</TextBlock>
+                <Button Margin="50, 0, 50, 0" Grid.Row="2" x:Name="bt_next" Content="Next" Click="tb_next_click" Background="#66A5AD"/>
+            </Grid>
+
+            <!--<StackPanel Grid.Row="0" x:Name="LV" Orientation="Vertical" VerticalAlignment="Center">-->
+
+
+            <!--</StackPanel>-->
+
+    </Grid>
 </Window>
