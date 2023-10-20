@@ -94,32 +94,25 @@ namespace Cats_Program
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //if (sender is Image clickedImage)
-            //{
-                // Получите байты изображения, которое было нажато
-                //byte[] image = GetImage(clickedImage);
-
-                // Получите соответствующий факт из списка factsCets
-                //int clickedImageIndex = LV.Items.IndexOf(clickedImage.DataContext); // Предполагается, что DataContext хранит информацию о факте
-
-                //if (clickedImageIndex >= 0 && clickedImageIndex < factsCets.Count)
-                //{
-                //string fact = factsCets[clickedImageIndex].ToString();
-
-                // Создайте экземпляр CatsDBContext
-                //using (var dbContext = new CatsDBContext())
-                //{
-                // Создайте новую запись SaveImage и сохраните ее в базе данных
-                //SaveImage saveImage = new SaveImage
-                //{
-                //    Facts = fact,
-                //    Image = catPhoto
-                //};
-                //dbContext.SaveImage.Add(saveImage);
-                //dbContext.SaveChanges();
-                //}
-                //}
-            //}
+            if (catPhoto != null)
+            {
+                using (var dbContext = new CatsDBContext())
+                {
+                    // Создайте новую запись SaveImage и сохраните ее в базе данных
+                    SaveImage saveImage = new SaveImage
+                    {
+                        Facts = catFact != null ? catFact.ToString() : null,
+                        Image = GetImage(photo)
+                    };
+                    dbContext.SaveImage.Add(saveImage);
+                    dbContext.SaveChanges();
+                }
+                MessageBox.Show("Изображение сохранено в базе данных.");
+            }
+            else
+            {
+                MessageBox.Show("Изображение не доступно для сохранения.");
+            }
         }
 
         private byte[] GetImage(Image image)
@@ -145,6 +138,7 @@ namespace Cats_Program
             page++;
             await ShowAsync();
         }
+
     }
 
 }
