@@ -97,7 +97,6 @@ namespace Cats_Program
             await ShowAsync();
         }
 
-
         //private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         //{
         //    if (sender is Image clickedImage)
@@ -126,6 +125,28 @@ namespace Cats_Program
         //        //}
         //    }
         //}
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (catPhoto != null)
+            {
+                using (var dbContext = new CatsDBContext())
+                {
+                    // Создайте новую запись SaveImage и сохраните ее в базе данных
+                    SaveImage saveImage = new SaveImage
+                    {
+                        Facts = catFact != null ? catFact.ToString() : null,
+                        Image = GetImage(photo)
+                    };
+                    dbContext.SaveImage.Add(saveImage);
+                    dbContext.SaveChanges();
+                }
+                MessageBox.Show("Изображение сохранено в базе данных.");
+            }
+            else
+            {
+                MessageBox.Show("Изображение не доступно для сохранения.");
+            }
+        }
 
         private byte[] GetImage(Image image)
         {
