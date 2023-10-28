@@ -196,6 +196,13 @@ namespace Cats_Program
             signUpWindow.Show();
             Close();
         }
+
+      
+
+        private void tb_like_click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 }

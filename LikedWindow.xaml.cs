@@ -32,5 +32,12 @@ namespace Cats_Program
             signUpWindow.Show();
             Close();
         }
+
+        private void btnMain_Click(object sender, RoutedEventArgs e)
+        {
+            CatWindow catWindow = new CatWindow();
+            catWindow.Show();
+            Close();
+        }
     }
 }
