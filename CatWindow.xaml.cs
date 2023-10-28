@@ -92,6 +92,7 @@ namespace Cats_Program
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             await ShowAsync();
+            bt_next.Width = window.Width - 100;
         }
 
         //private void Image_MouseDown(object sender, MouseButtonEventArgs e)
@@ -173,11 +174,12 @@ namespace Cats_Program
         {
             double modifier = (window.Height / defWinHeight) * 10;
             btnLike.Height *= modifier;
-            //likeImg.Height *= modifier;
+            likeImg.Height *= modifier;
             btnMain.Height *= modifier;
-            //mainImg.Height *= modifier;
+            mainImg.Height *= modifier;
             btnLogout.Height *= modifier;
-            //logoutImg.Height *= modifier;
+            logoutImg.Height *= modifier;
+            bt_next.Width = window.Width - 100;
             //fact.FontSize = fact.FontSize *modifier;
         }
 
