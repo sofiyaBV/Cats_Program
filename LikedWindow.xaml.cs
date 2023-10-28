@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using Cats_Program.Domain.Models;
+using System.Collections.Generic;
+using System.Windows;
 
 namespace Cats_Program
 {
@@ -8,28 +10,27 @@ namespace Cats_Program
     public partial class LikedWindow : Window
     {
         private const int defWinHeight = 450;
-
-        public LikedWindow()
+        private List<Fact_and_Photo_Cat> likedCats = new List<Fact_and_Photo_Cat>();
+        public LikedWindow(List<Fact_and_Photo_Cat> likedCat)
         {
             InitializeComponent();
+            likedCats = likedCat;
+            likedCatsLV.ItemsSource = likedCats;
         }
 
         private void window_SizeChanged(object sender, RoutedEventArgs e)
         {
             double modifier = (window.Height / defWinHeight) * 10;
-            btnLike.Height *= modifier;
-            //likeImg.Height *= modifier;
+            btnLike.Height *= modifier;    
             btnMain.Height *= modifier;
-            //mainImg.Height *= modifier;
             btnLogout.Height *= modifier;
-            //logoutImg.Height *= modifier;
-            //fact.FontSize = fact.FontSize *modifier;
+            
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
-            SignUpWindow signUpWindow = new SignUpWindow();
-            signUpWindow.Show();
+            WindowGamePytnashki catWindow = new WindowGamePytnashki(likedCats);
+            catWindow.Show();
             Close();
         }
 

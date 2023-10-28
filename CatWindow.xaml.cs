@@ -9,6 +9,7 @@ using DBCats.Tables;
 using DBCats;
 using System.Windows.Input;
 using System.Windows.Controls;
+using System.Collections.Generic;
 
 namespace Cats_Program
 {
@@ -17,6 +18,7 @@ namespace Cats_Program
     /// </summary>
     public partial class CatWindow : Window
     {
+        private List<Fact_and_Photo_Cat> likedCats = new List<Fact_and_Photo_Cat>();
         public CatWindow()
         {
             InitializeComponent();
@@ -185,7 +187,7 @@ namespace Cats_Program
 
         private void bt_Like_Click(object sender, RoutedEventArgs e)
         {
-            LikedWindow likedWindow = new LikedWindow();
+            LikedWindow likedWindow = new LikedWindow(likedCats);
             likedWindow.Show();
             Close();
         }
@@ -201,7 +203,11 @@ namespace Cats_Program
 
         private void tb_like_click(object sender, RoutedEventArgs e)
         {
-
+            if (catPhoto != null && catFact != null)
+            {
+                likedCats.Add(new Fact_and_Photo_Cat(catPhoto, catFact));
+                MessageBox.Show("Цей кіт був доданий в обрані!");
+            }
         }
     }
 
