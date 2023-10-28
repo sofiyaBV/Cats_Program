@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Cats_Program"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="SignUpWindow" Height="450" Width="800">
+        Title="SignUpWindow" Height="450" Width="800" Left="100" Top="100">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

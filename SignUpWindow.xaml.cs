@@ -1,14 +1,5 @@
-﻿using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using MaterialDesignThemes.Wpf;
-using System.Diagnostics;
-using System.Threading;
-using DBCats;
-using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
+﻿using DBCats;
 using System.Windows;
-using System;
 using DBCats.Tables;
 using System.Linq;
 

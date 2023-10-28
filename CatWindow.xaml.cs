@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Threading.Tasks;
 using System;
 using System.Windows;
@@ -10,8 +9,6 @@ using DBCats.Tables;
 using DBCats;
 using System.Windows.Input;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.ComponentModel.Design;
 
 namespace Cats_Program
 {
@@ -182,6 +179,20 @@ namespace Cats_Program
             btnLogout.Height *= modifier;
             //logoutImg.Height *= modifier;
             //fact.FontSize = fact.FontSize *modifier;
+        }
+
+        private void bt_Like_Click(object sender, RoutedEventArgs e)
+        {
+            LikedWindow likedWindow = new LikedWindow();
+            likedWindow.Show();
+            Close();
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            SignUpWindow signUpWindow = new SignUpWindow();
+            signUpWindow.Show();
+            Close();
         }
     }
 
