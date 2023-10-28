@@ -15,29 +15,25 @@ using System.Windows.Shapes;
 namespace Cats_Program
 {
     /// <summary>
-    /// Interaction logic for RegisterWindow.xaml
+    /// Interaction logic for LogInWindow.xaml
     /// </summary>
-    public partial class RegisterWindow : Window
+    public partial class LogInWindow : Window
     {
-        public RegisterWindow()
+        public LogInWindow()
         {
             InitializeComponent();
         }
 
-        private void btnSignUp_Click(object sender, RoutedEventArgs e)
+        private void LogIn_Click(object sender, RoutedEventArgs e)
         {
-            SignUpWindow signUpWindow = new SignUpWindow();
-            signUpWindow.Show();
-            Close();
 
         }
 
-        private void btLogin_Click(object sender, RoutedEventArgs e)
+        private void Create_Click(object sender, RoutedEventArgs e)
         {
-            LogInWindow login = new LogInWindow();
-            login.Show();
+            SignUpWindow signup = new SignUpWindow();
+            signup.Show();
             Close();
-
         }
     }
 }
