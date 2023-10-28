@@ -34,8 +34,8 @@ namespace Cats_Program
 
         private void btLogin_Click(object sender, RoutedEventArgs e)
         {
-            LogInWindow login = new LogInWindow();
-            login.Show();
+            Reg reg = new Reg();
+            reg.Show();
             Close();
 
         }

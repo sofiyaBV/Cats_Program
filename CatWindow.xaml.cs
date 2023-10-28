@@ -11,7 +11,6 @@ using DBCats;
 using System.Windows.Input;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.ComponentModel.Design;
 
 namespace Cats_Program
 {
@@ -24,9 +23,6 @@ namespace Cats_Program
         {
             InitializeComponent();
         }
-        private const int font_size = 15;
-        private const int defWinHeight = 450;
-
         private int page = 1;
         private Cat_Photo? catPhoto;
         private Cat_Fact? catFact;
@@ -35,7 +31,6 @@ namespace Cats_Program
             Cat_API_Client catApiClient = new Cat_API_Client();
             try
             {
-
                 byte[] catImageData = await catApiClient.GetRandomCatImageAsync();
                 if (catImageData != null)
                 {
@@ -97,34 +92,6 @@ namespace Cats_Program
             await ShowAsync();
         }
 
-        //private void Image_MouseDown(object sender, MouseButtonEventArgs e)
-        //{
-        //    if (sender is Image clickedImage)
-        //    {
-        //        // Получите байты изображения, которое было нажато
-        //        byte[] image = GetImage(clickedImage);
-
-        //        // Получите соответствующий факт из списка factsCets
-        //        //int clickedImageIndex = LV.Items.IndexOf(clickedImage.DataContext); // Предполагается, что DataContext хранит информацию о факте
-        //        //if (clickedImageIndex >= 0 && clickedImageIndex < factsCets.Count)
-        //        //{
-        //        //    string fact = factsCets[clickedImageIndex].ToString();
-
-        //        //    // Создайте экземпляр CatsDBContext
-        //        //    using (var dbContext = new CatsDBContext())
-        //        //    {
-        //        //        // Создайте новую запись SaveImage и сохраните ее в базе данных
-        //        //        SaveImage saveImage = new SaveImage
-        //        //        {
-        //        //            Facts = fact, 
-        //        //            Image = image
-        //        //        };
-        //        //        dbContext.SaveImage.Add(saveImage);
-        //        //        dbContext.SaveChanges();
-        //        //    }
-        //        //}
-        //    }
-        //}
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (catPhoto != null)
@@ -172,17 +139,6 @@ namespace Cats_Program
             await ShowAsync();
         }
 
-        private void window_SizeChanged(object sender, RoutedEventArgs e)
-        {
-            double modifier = (window.Height / defWinHeight) * 10;
-            btnLike.Height *= modifier;
-            //likeImg.Height *= modifier;
-            btnMain.Height *= modifier;
-            //mainImg.Height *= modifier;
-            btnLogout.Height *= modifier;
-            //logoutImg.Height *= modifier;
-            //fact.FontSize = fact.FontSize *modifier;
-        }
     }
 
 }
