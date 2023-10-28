@@ -19,6 +19,8 @@ namespace Cats_Program
     /// </summary>
     public partial class LikedWindow : Window
     {
+        private const int defWinHeight = 450;
+
         public LikedWindow()
         {
             InitializeComponent();

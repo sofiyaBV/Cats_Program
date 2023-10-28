@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Cats_Program"
         mc:Ignorable="d"
-        Title="LikedWindow" x:Name="window" Height="450" Width="800">
+        Title="LikedWindow" x:Name="window" MinHeight="450" MinWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.1*"/>
