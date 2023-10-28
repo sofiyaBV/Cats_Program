@@ -61,8 +61,8 @@ namespace Cats_Program
 
         private void Enter_Click(object sender, RoutedEventArgs e)
         {
-            Reg reg = new Reg();
-            reg.Show();
+            LogInWindow login = new LogInWindow();
+            login.Show();
             Close();
         }
     }
