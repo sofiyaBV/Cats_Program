@@ -23,5 +23,17 @@ namespace Cats_Program
         {
             InitializeComponent();
         }
+
+        private void window_SizeChanged(object sender, RoutedEventArgs e)
+        {
+            double modifier = (window.Height / defWinHeight) * 10;
+            btnLike.Height *= modifier;
+            //likeImg.Height *= modifier;
+            btnMain.Height *= modifier;
+            //mainImg.Height *= modifier;
+            btnLogout.Height *= modifier;
+            //logoutImg.Height *= modifier;
+            //fact.FontSize = fact.FontSize *modifier;
+        }
     }
 }
