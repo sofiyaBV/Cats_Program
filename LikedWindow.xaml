@@ -1,0 +1,61 @@
+﻿<Window x:Class="Cats_Program.LikedWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Cats_Program"
+        mc:Ignorable="d"
+        Title="LikedWindow" x:Name="window" MinHeight="450" MinWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Background="#66A5AD">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" x:Name="btnLike">
+                <Image x:Name="likeImg" Source=".\Assets\Pages\star.png"></Image>
+            </Button>
+            <Button  Grid.Row="1" x:Name="btnMain" Click="btnMain_Click">
+                <Image x:Name="mainImg" Source=".\Assets\Pages\main.png"></Image>
+            </Button>
+            <Button Grid.Row="2" x:Name="btnLogout" Click="btnLogout_Click">
+                <Image x:Name="logoutImg" Source=".\Assets\Pages\logout.png"></Image>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Viewbox Height="90" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Image Source="./Assets/Images/likedtitle.png" Margin="0 10 0 0"/>
+            </Viewbox>
+
+            <ListView x:Name="likedCatsLV" Grid.Row="1" Grid.RowSpan="2">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Image Source="{Binding bitmapImage}" Width="100" Height="250" />
+                            <TextBlock Text="{Binding factsCat}" TextWrapping="Wrap" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!--<Image Grid.Row="0" x:Name="photo" Source="{Binding bitmapImage}" HorizontalAlignment="Center" VerticalAlignment="Center" ClipToBounds="True"/>
+            <TextBlock x:Name="fact" FontSize="15" Grid.Row="1" Text="{Binding factsCat}" TextTrimming="WordEllipsis" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center">Content</TextBlock>
+            <Button Margin="50, 0, 50, 0" Grid.Row="2" x:Name="bt_next" Content="Next" Click="tb_next_click" Background="#66A5AD"/>-->
+        </Grid>
+    </Grid>
+</Window>

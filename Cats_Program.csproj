@@ -7,4 +7,55 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <None Remove="Assets\Images\catprints.png" />
+    <None Remove="Assets\Images\catprints3.png" />
+    <None Remove="Assets\Images\catShadow2_1.png" />
+    <None Remove="Assets\Images\catspaws1.jpg" />
+    <None Remove="Assets\Images\catstitle.png" />
+    <None Remove="Assets\Images\likedtitle.png" />
+    <None Remove="Assets\Images\logintitle.png" />
+    <None Remove="Assets\Images\signuptitle.png" />
+    <None Remove="Assets\Pages\logout.png" />
+    <None Remove="Assets\Pages\main.png" />
+    <None Remove="Assets\Pages\star.png" />
+    <None Remove="Assets\Pages\testimage.jpg" />
+    <None Remove="Presentation\Pages\MainPage\Assets\logout.png" />
+    <None Remove="Presentation\Pages\MainPage\Assets\main.png" />
+    <None Remove="Presentation\Pages\MainPage\Assets\star.png" />
+    <None Remove="Presentation\Pages\MainPage\Assets\testimage.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignColors" Version="2.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.12" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\catprints.png" />
+    <Resource Include="Assets\Images\catprints3.png" />
+    <Resource Include="Assets\Images\catShadow2_1.png" />
+    <Resource Include="Assets\Images\catspaws1.jpg" />
+    <Resource Include="Assets\Images\catstitle.png" />
+    <Resource Include="Assets\Images\likedtitle.png" />
+    <Resource Include="Assets\Images\logintitle.png" />
+    <Resource Include="Assets\Images\signuptitle.png" />
+    <Resource Include="Assets\Pages\logout.png" />
+    <Resource Include="Assets\Pages\main.png" />
+    <Resource Include="Assets\Pages\star.png" />
+    <Resource Include="Assets\Pages\testimage.jpg" />
+    <Resource Include="Presentation\Pages\MainPage\Assets\logout.png" />
+    <Resource Include="Presentation\Pages\MainPage\Assets\main.png" />
+    <Resource Include="Presentation\Pages\MainPage\Assets\star.png" />
+    <Resource Include="Presentation\Pages\MainPage\Assets\testimage.jpg" />
+  </ItemGroup>
+
 </Project>
