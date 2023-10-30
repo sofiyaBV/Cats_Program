@@ -98,34 +98,6 @@ namespace Cats_Program
             bt_next.Width = window.Width - 100;
         }
 
-        //private void Image_MouseDown(object sender, MouseButtonEventArgs e)
-        //{
-        //    if (sender is Image clickedImage)
-        //    {
-        //        // Получите байты изображения, которое было нажато
-        //        byte[] image = GetImage(clickedImage);
-
-        //        // Получите соответствующий факт из списка factsCets
-        //        //int clickedImageIndex = LV.Items.IndexOf(clickedImage.DataContext); // Предполагается, что DataContext хранит информацию о факте
-        //        //if (clickedImageIndex >= 0 && clickedImageIndex < factsCets.Count)
-        //        //{
-        //        //    string fact = factsCets[clickedImageIndex].ToString();
-
-        //        //    // Создайте экземпляр CatsDBContext
-        //        //    using (var dbContext = new CatsDBContext())
-        //        //    {
-        //        //        // Создайте новую запись SaveImage и сохраните ее в базе данных
-        //        //        SaveImage saveImage = new SaveImage
-        //        //        {
-        //        //            Facts = fact, 
-        //        //            Image = image
-        //        //        };
-        //        //        dbContext.SaveImage.Add(saveImage);
-        //        //        dbContext.SaveChanges();
-        //        //    }
-        //        //}
-        //    }
-        //}
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (catPhoto != null)
@@ -182,7 +154,6 @@ namespace Cats_Program
             btnLogout.Height *= modifier;
             logoutImg.Height *= modifier;
             bt_next.Width = window.Width - 100;
-            //fact.FontSize = fact.FontSize *modifier;
         }
 
         private void bt_Like_Click(object sender, RoutedEventArgs e)
@@ -203,11 +174,6 @@ namespace Cats_Program
 
         private void tb_like_click(object sender, RoutedEventArgs e)
         {
-            //if (catPhoto != null && catFact != null)
-            //{
-            //    likedCats.Add(new Fact_and_Photo_Cat(catPhoto, catFact));
-            //    MessageBox.Show("Цей кіт був доданий в обрані!");
-            //}
             if (catPhoto != null && catFact != null)
             {
                 using (var dbContext = new CatsDBContext())
@@ -226,7 +192,7 @@ namespace Cats_Program
 
         private void btnGame_ClickAsync(object sender, RoutedEventArgs e)
         {
-            WindowGamePyatnashki catWindow = new WindowGamePyatnashki(likedCats);
+            CatWindow catWindow = new CatWindow();
             catWindow.Show();
             Close();
         }

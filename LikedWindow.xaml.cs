@@ -21,17 +21,16 @@ namespace Cats_Program
         public LikedWindow()
         {
             InitializeComponent();
-            //likedCats = likedCat;
-            //likedCatsLV.ItemsSource = likedCats;
 
             
         }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             likedCats = GetLikedCatsFromDatabase();
-            
-            likedCatsLV.ItemsSource = likedCats;
-            //bt_next.Width = window.Width - 100;
+            if (likedCats != null)
+            {
+                likedCatsLV.ItemsSource = likedCats;
+            }
         }
 
         private List<Fact_and_Photo_Cat> GetLikedCatsFromDatabase()
@@ -43,7 +42,6 @@ namespace Cats_Program
                 var savedImages = dbContext.SaveImage.AsNoTracking().ToList();
                 foreach (var savedImage in savedImages)
                 {
-                    // Створюємо BitmapImage з байтів зображення
                     BitmapImage bitmapImage = new BitmapImage();
                     using (MemoryStream memoryStream = new MemoryStream(savedImage.Image))
                     {
@@ -53,11 +51,9 @@ namespace Cats_Program
                         bitmapImage.EndInit();
                     }
 
-                    // Створюємо об'єкт Cat_Photo та Cat_Fact
                     Cat_Photo catPhoto = new Cat_Photo(bitmapImage);
                     Cat_Fact catFact = new Cat_Fact(savedImage.Facts);
 
-                    // Створюємо Fact_and_Photo_Cat та додаємо до списку likedCats
                     Fact_and_Photo_Cat factAndPhoto = new Fact_and_Photo_Cat(catPhoto, catFact);
                     likedCats.Add(factAndPhoto);
                 }
@@ -77,7 +73,7 @@ namespace Cats_Program
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
-            WindowGamePyatnashki catWindow = new WindowGamePyatnashki(likedCats);
+            SignUpWindow catWindow = new SignUpWindow();
             catWindow.Show();
             Close();
         }
