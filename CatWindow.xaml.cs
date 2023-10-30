@@ -87,6 +87,7 @@ namespace Cats_Program
             Fact_and_Photo_Cat fact_and_photo = new Fact_and_Photo_Cat(catPhoto, catFact);
             photo.Source = null;
             fact.Text = null;
+            likedCats.Add(fact_and_photo);
             photo.Source = fact_and_photo.photo.GetPhoto();
             fact.Text = fact_and_photo.factsCat.ToString();
         }
@@ -131,7 +132,6 @@ namespace Cats_Program
             {
                 using (var dbContext = new CatsDBContext())
                 {
-                    // Создайте новую запись SaveImage и сохраните ее в базе данных
                     SaveImage saveImage = new SaveImage
                     {
                         Facts = catFact != null ? catFact.ToString() : null,
@@ -187,7 +187,7 @@ namespace Cats_Program
 
         private void bt_Like_Click(object sender, RoutedEventArgs e)
         {
-            LikedWindow likedWindow = new LikedWindow(likedCats);
+            LikedWindow likedWindow = new LikedWindow();
             likedWindow.Show();
             Close();
         }
@@ -203,12 +203,34 @@ namespace Cats_Program
 
         private void tb_like_click(object sender, RoutedEventArgs e)
         {
+            //if (catPhoto != null && catFact != null)
+            //{
+            //    likedCats.Add(new Fact_and_Photo_Cat(catPhoto, catFact));
+            //    MessageBox.Show("Цей кіт був доданий в обрані!");
+            //}
             if (catPhoto != null && catFact != null)
             {
-                likedCats.Add(new Fact_and_Photo_Cat(catPhoto, catFact));
-                MessageBox.Show("Цей кіт був доданий в обрані!");
+                using (var dbContext = new CatsDBContext())
+                {
+                    SaveImage likedImage = new SaveImage
+                    {
+                        Facts = catFact.ToString(),
+                        Image = GetImage(photo)
+                    };
+                    dbContext.SaveImage.Add(likedImage);
+                    dbContext.SaveChanges();
+                }
+                MessageBox.Show("Зображення було додане в обрані!");
             }
         }
+
+        private void btnGame_ClickAsync(object sender, RoutedEventArgs e)
+        {
+            WindowGamePyatnashki catWindow = new WindowGamePyatnashki(likedCats);
+            catWindow.Show();
+            Close();
+        }
+        
     }
 
 }

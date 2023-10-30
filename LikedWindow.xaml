@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Cats_Program"
         mc:Ignorable="d"
-        Title="LikedWindow" x:Name="window" MinHeight="450" MinWidth="800">
+        Title="LikedWindow" x:Name="window" MinHeight="450" MinWidth="800" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.1*"/>
@@ -46,7 +46,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <Image Source="{Binding bitmapImage}" Width="100" Height="250" />
+                            <Image Source="{Binding photo.ImageURL}" Width="300" Height="250" Stretch="Fill"/>
                             <TextBlock Text="{Binding factsCat}" TextWrapping="Wrap" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </DataTemplate>

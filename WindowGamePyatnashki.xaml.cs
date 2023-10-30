@@ -15,36 +15,30 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace Cats_Program
-{
-    /// <summary>
-    /// Interaction logic for WindowGamePytnashki.xaml
-    /// </summary>
-    public partial class WindowGamePytnashki : Window
+{   
+    public class FButton : Button
     {
-        private List<Fact_and_Photo_Cat> likedCats = new List<Fact_and_Photo_Cat>();
+        public int X;
+        public int Y;
+    }
+    public partial class WindowGamePyatnashki : Window
+    {
         private int _x;
         private int _y;
-
+        private List<Fact_and_Photo_Cat> likedCats = new List<Fact_and_Photo_Cat>();
 
         private Dictionary<int, FButton> _buttons =
             new Dictionary<int, FButton>(16);
-
-        public class FButton : Button
-        {
-            public int X;
-            public int Y;
-        }
-        public WindowGamePytnashki(List<Fact_and_Photo_Cat> likedCat)
+        public WindowGamePyatnashki(List<Fact_and_Photo_Cat> likedCat)
         {
             InitializeComponent();
             likedCats = likedCat;
-            fullButton();
+            CreateImageGridAsync();
             Random();
-            //likedCatsLV.ItemsSource = likedCats;
         }
-
-        private void fullButton()
+        private async Task CreateImageGridAsync()
         {
+            
             int i = 0;
             foreach (var obj in grid.Children)
             {
@@ -53,9 +47,7 @@ namespace Cats_Program
                     var btn = (FButton)obj;
                     var image = new Image
                     {
-                        Source = likedCats[i].photo,
-
-                        //Source = catPhotos[i].ImageURL,
+                        Source = likedCats[i].photo.ImageURL,
                         Stretch = System.Windows.Media.Stretch.Fill
                     };
                     btn.Content = image;
@@ -65,14 +57,14 @@ namespace Cats_Program
                     btn.Click += OnFButtonClick;
                     _buttons.Add(i++, btn);
 
-                    var catPhoto = likedCats[i].photo;
+                    var catPhoto = likedCats[i].photo.ImageURL;
                     LV.Items.Add(catPhoto);
 
                 }
             }
         }
 
-        private void OnFButtonClick(object sender, RoutedEventArgs e)
+        protected void OnFButtonClick(object sender, RoutedEventArgs e)
         {
             var button = (FButton)sender;
             int x = Grid.GetRow(button);
@@ -126,8 +118,4 @@ namespace Cats_Program
             }
         }
     }
-    
 }
-
-
-
